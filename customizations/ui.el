@@ -5,4 +5,6 @@
 (set-face-attribute 'default nil :family "Terminus (TTF) Medium" :height 90)
 (set-frame-font "Terminus (TTF) Medium"  nil t)
 
-(setq fancy-splash-image "~/Documents/logo.png")
+(let ((filename "~/.emacs.d/startup.txt"))
+  (when (file-exists-p filename)
+    (setq initial-buffer-choice filename)))

@@ -2,7 +2,7 @@
 
 (let ((color-1 "#5e5e5e")  ;;Grey
       (color-2 "#000000")  ;;Black
-      (color-3 "#00ff00")  ;;Green
+      (color-3 "#ff8e00")  ;;Yellow
       (color-4 "#ff0000")) ;;Red
   (custom-theme-set-faces
    'theme
