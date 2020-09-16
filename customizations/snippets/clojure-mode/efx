@@ -1,0 +1,8 @@
+-*- mode: snippet -*-
+# name: efx
+# key: efx
+# --
+(rf/reg-event-fx
+ ::
+ (fn [_ [_ {:keys [params]]]]
+   ))

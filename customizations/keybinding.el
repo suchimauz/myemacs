@@ -22,7 +22,24 @@
  :prefix  "SPC s"
  :keymaps 'override
  :states  '(normal visual)
+ "s" 'yas-insert-snippet
+ "d" 'find-file
  "f" 'helm-find-files)
+
+(general-define-key
+ :prefix  "SPC"
+ :keymaps 'override
+ :states  '(normal visual)
+ "." 'avy-goto-char-timer)
+
+;;Eshell
+(general-define-key
+ :prefix  "SPC t"
+ :keymaps 'override
+ :states  '(normal visual)
+ "c" 'eshell-command
+ "e" 'eshell
+ )
 
 ;;Window
 (general-define-key
