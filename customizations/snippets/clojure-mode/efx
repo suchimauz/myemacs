@@ -2,7 +2,7 @@
 # name: efx
 # key: efx
 # --
-(rf/reg-event-db
+(rf/reg-event-fx
  ::
- (fn [db [_ {:keys [params]}]]
+ (fn [_ [_ {:keys [params]}]]
    ))
