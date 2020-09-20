@@ -1,8 +1,8 @@
 -*- mode: snippet -*-
-# name: efx
-# key: efx
+# name: edb
+# key: edb
 # --
 (rf/reg-event-db
  ::
  (fn [db [_ {:keys [params]}]]
-   ))
+  ))

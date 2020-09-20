@@ -6,6 +6,7 @@
 (setq ring-bell-function 'ignore)
 (setq make-backup-files  nil)
 (setq vc-handled-backends nil)
+(setq gc-cons-percentage 800000)
 
 (defvar my-packages 
   '(cider
@@ -35,9 +36,6 @@
 (yas-global-mode 1)
 (electric-pair-mode 1)
 
-;;Info
-(message "Emacs loaded in %s" (emacs-init-time))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,7 +43,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages '(helm ace-window general evil cider))
  '(safe-local-variable-values
-   '((cider-figwheel-main-default-options . ":dev")
+   '((cider-clojure-cli-global-options . "-A:fig")
+     (cider-figwheel-main-default-options . ":dev")
      (cider-default-cljs-repl . figwheel-main)
      (cider-clojure-cli-global-options . "-A:fig:test"))))
 (custom-set-faces

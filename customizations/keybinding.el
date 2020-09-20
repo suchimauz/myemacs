@@ -1,6 +1,7 @@
 (require 'general)
 
 ;; Eval
+
 (general-define-key
  :prefix  "SPC e"
  :keymaps 'override
@@ -9,6 +10,7 @@
  "b" 'cider-eval-buffer)
 
 ;;Repl
+
 (general-define-key
  :prefix  "SPC r"
  :keymaps 'override
@@ -24,7 +26,8 @@
  :states  '(normal visual)
  "s" 'yas-insert-snippet
  "d" 'find-file
- "f" 'helm-find-files)
+ "f" 'helm-find-files
+ "r" 'helm-regexp)
 
 (general-define-key
  :prefix  "SPC"
@@ -38,7 +41,7 @@
  :keymaps 'override
  :states  '(normal visual)
  "c" 'eshell-command
- "e" 'eshell
+ "t" 'term
  )
 
 ;;Window

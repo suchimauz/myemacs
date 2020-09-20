@@ -1,0 +1,8 @@
+-*- mode: snippet -*-
+# name: sub
+# key: sub
+# --
+(rf/reg-sub
+ ::
+ (fn [db _]
+   ))
