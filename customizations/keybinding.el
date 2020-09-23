@@ -10,14 +10,16 @@
  "b" 'cider-eval-buffer)
 
 ;;Repl
-
 (general-define-key
  :prefix  "SPC r"
  :keymaps 'override
  :states  '(normal visual)
  "j" 'cider-jack-in-clj
  "s" 'cider-jack-in-cljs
- "x" 'cider-jack-in-clj&cljs)
+ "x" 'cider-jack-in-clj&cljs
+ "cj" 'cider-connect-clj
+ "cs" 'cider-connect-cljs
+ "cx" 'cider-connect-clj&cljs)
 
 ;; Search
 (general-define-key
@@ -28,6 +30,20 @@
  "d" 'find-file
  "f" 'helm-find-files
  "r" 'helm-regexp)
+
+(general-define-key
+ :prefix  "SPC p"
+ :keymaps 'override
+ :states  '(normal visual)
+ "r" 'paredit-raise-sexp
+ "s" 'paredit-forward-slurp-sexp)
+
+
+(general-define-key
+ :prefix  "SPC g"
+ :keymaps 'override
+ :states  '(normal visual)
+ "d" 'dumb-jump-go)
 
 (general-define-key
  :prefix  "SPC"
@@ -62,4 +78,3 @@
  :keymaps 'override
  :states  '(normal visual)
  "r"      'rename-file)
-

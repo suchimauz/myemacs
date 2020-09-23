@@ -1,38 +1,45 @@
-(require 'package)
+(let ((gc-cons-threshold most-positive-fixnum)
+      (file-name-handler-alist nil))
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+  (package-initialize)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
-(setq ring-bell-function 'ignore)
-(setq make-backup-files  nil)
-(setq vc-handled-backends nil)
-(setq gc-cons-percentage 800000)
+  (defvar my-packages 
+    '(;;Moving
+      avy
+      ace-window
+      dumb-jump 
 
-(defvar my-packages 
-  '(cider
-    avy
-    evil
-    company
-    yasnippet
-    general
-    ace-window
-    helm))
+      ;;Editing
+      general
+      company
+      yasnippet
+      evil
 
-(dolist (p my-packages)
-  (unless (package-installed-p p)
-    (package-install p)))
+      paredit
 
-;; Customization 
-(add-to-list 'load-path "~/.emacs.d/customizations")
-(load "editing.el")
-(load "keybinding.el")
-(load "ui.el")
+      ;;Search
+      helm
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/customizations/")
-(setq yas-snippet-dirs '("~/.emacs.d/customizations/snippets"))
+      ;;Clojure
+      cider))
 
-(add-hook 'after-init-hook 'global-company-mode)
-(load-theme 'panthevm t)
+  (dolist (p my-packages)
+    (unless (package-installed-p p)
+      (package-install p)))
+
+  ;; Customization 
+  (add-to-list 'load-path "~/.emacs.d/customizations")
+  (load "editing.el")
+  (load "keybinding.el")
+
+  (setq yas-snippet-dirs '("~/.emacs.d/customizations/snippets"))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'clojure-mode #'enable-paredit-mode)
 (yas-global-mode 1)
 (electric-pair-mode 1)
 
@@ -41,7 +48,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(helm ace-window general evil cider))
+ '(package-selected-packages '(use-package helm ace-window general evil cider))
  '(safe-local-variable-values
    '((cider-clojure-cli-global-options . "-A:fig")
      (cider-figwheel-main-default-options . ":dev")
@@ -52,4 +59,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ ))
