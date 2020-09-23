@@ -16,14 +16,15 @@
 
       ;;Editing
       general
-      company
       yasnippet
       evil
-
       paredit
+      xclip
 
       ;;Search
       helm
+      company
+      company-statistics
 
       ;;Clojure
       cider))
@@ -32,16 +33,11 @@
     (unless (package-installed-p p)
       (package-install p)))
 
-  ;; Customization 
-  (add-to-list 'load-path "~/.emacs.d/customizations")
-  (load "editing.el")
-  (load "keybinding.el")
+  (xclip-mode 1)
 
-  (setq yas-snippet-dirs '("~/.emacs.d/customizations/snippets"))
-  (add-hook 'after-init-hook 'global-company-mode)
-  (add-hook 'clojure-mode #'enable-paredit-mode)
-(yas-global-mode 1)
-(electric-pair-mode 1)
+  (add-to-list 'load-path "~/.emacs.d/customizations")
+  (evil-mode 1)
+  (load "keybinding.el"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -59,4 +55,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ))
+ )
