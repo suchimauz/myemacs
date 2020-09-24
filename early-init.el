@@ -62,3 +62,10 @@
 
 (add-hook 'clojure-mode #'yas-minor-mode)
 (add-hook 'clojure-mode #'enable-paredit-mode)
+
+;;Startup buffer
+(with-current-buffer "*scratch*"
+  (insert " Startup time  | " (emacs-init-time) "\n"
+	  " Version       | " (replace-regexp-in-string "\n" "" (emacs-version))))
+
+
