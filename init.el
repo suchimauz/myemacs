@@ -37,7 +37,8 @@
 
   (add-to-list 'load-path "~/.emacs.d/customizations")
   (evil-mode 1)
-  (load "keybinding.el"))
+  (load "keybinding.el")
+  (load "psql.el"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

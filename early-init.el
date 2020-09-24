@@ -1,3 +1,6 @@
+;;Environments
+(setenv "PGPASSWORD" "postgres")
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/customizations/")
 
 ;;Add snippets directory

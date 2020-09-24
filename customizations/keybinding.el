@@ -1,5 +1,4 @@
 (require 'general)
-
 ;; Eval
 
 (general-define-key
@@ -7,7 +6,8 @@
  :keymaps 'override
  :states  '(normal visual)
  "p" 'cider-eval-sexp-at-point
- "b" 'cider-eval-buffer)
+ "b" 'cider-eval-buffer
+ "s" 'run-sql)
 
 ;;Repl
 (general-define-key
