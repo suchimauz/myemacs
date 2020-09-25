@@ -1,13 +1,7 @@
 ;;Environments
 (setenv "PGPASSWORD" "postgres")
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/customizations/")
-
 ;;Add snippets directory
 (setq yas-snippet-dirs '("~/.emacs.d/customizations/snippets"))
-
-;;Enable a specific custom theme
-(load-theme 'panthevm t)   
 
 ;;Disable splash screen
 (setq inhibit-startup-message t)
@@ -62,10 +56,3 @@
 
 (add-hook 'clojure-mode #'yas-minor-mode)
 (add-hook 'clojure-mode #'enable-paredit-mode)
-
-;;Startup buffer
-(with-current-buffer "*scratch*"
-  (insert " Startup time  | " (emacs-init-time) "\n"
-	  " Version       | " (replace-regexp-in-string "\n" "" (emacs-version))))
-
-

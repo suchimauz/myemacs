@@ -26,6 +26,9 @@
       company
       company-statistics
 
+      ;;Web
+      ;;verb
+
       ;;Clojure
       cider))
 
@@ -34,14 +37,16 @@
       (package-install p)))
 
   (xclip-mode 1)
+  (evil-mode 1)
 
   (add-to-list 'load-path "~/.emacs.d/customizations")
-  (evil-mode 1)
   (load "keybinding.el")
   (load "psql.el")
 
-  
-  )
+  ;;Startup buffer
+  (with-current-buffer "*scratch*"
+    (insert " Startup time  | " (emacs-init-time) "\n"
+	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
