@@ -1,15 +1,23 @@
 (let ((gc-cons-threshold most-positive-fixnum)
       (file-name-handler-alist nil))
 
-  (eval-when-compile
-    (add-to-list 'load-path "~/.emacs.d/plugins/use-package")
-    (require 'use-package))
+  (require 'package)
+
+  (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/"))
+  (setq package-enable-at-startup nil)
+  (package-initialize nil)
+  (unless (package-installed-p 'use-package)
+    (message "EMACS install use-package.el")
+    (package-refresh-contents)
+    (package-install 'use-package))
 
   (use-package evil
     :ensure t
     :functions  evil-mode
     :config
     (evil-mode 1))
+
   (use-package yasnippet
     :ensure t
     :commands  yas-reload-all
@@ -17,30 +25,35 @@
     :config
     (setq yas-snippet-dirs  '("~/.emacs.d/customizations/snippets"))
     (yas-reload-all))
-  (use-package cider
-    :ensure t
-    :load-path "~/.emacs.d/plugins/cider")
-  (use-package avy
-    :ensure t
-    :load-path "~/.emacs.d/plugins/avy")
-  (use-package ace-window
-    :ensure t
-    :load-path "~/.emacs.d/plugins/ace-window")
+
   (use-package paredit
     :ensure t
-    :load-path "~/.emacs.d/plugins/paredit"
     :hook      ((clojure-mode . enable-paredit-mode)))
+
   (use-package xclip
     :ensure t
     :config (xclip-mode 1))
+
   (use-package company
     :ensure t
     :hook ((after-init-hook . global-company-mode)))
+
   (use-package company-statistics
     :ensure t
     :hook   ((after-init-hook . company-statistics-mode)))
+
+  (use-package cider
+    :ensure t)
+
+  (use-package avy 
+    :ensure t)
+
+  (use-package ace-window
+    :ensure t)
+  
   (use-package clojure-mode
     :ensure t)
+
   (use-package general
     :ensure t)
 
