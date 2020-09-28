@@ -1,7 +1,5 @@
 ;;Environments
 (setenv "PGPASSWORD" "postgres")
-;;Add snippets directory
-(setq yas-snippet-dirs '("~/.emacs.d/customizations/snippets"))
 
 ;;Disable splash screen
 (setq inhibit-startup-message t)
@@ -48,11 +46,5 @@
 ;;Show suggestions after entering two character.
 (setq company-minimum-prefix-length 2)
 
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'after-init-hook 'company-statistics-mode)
-
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
-
-(add-hook 'clojure-mode #'yas-minor-mode)
-(add-hook 'clojure-mode #'enable-paredit-mode)
