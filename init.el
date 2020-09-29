@@ -2,13 +2,10 @@
       (file-name-handler-alist nil))
 
   (require 'package)
-
-  (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-  (add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
   (setq package-enable-at-startup nil)
   (package-initialize nil)
   (unless (package-installed-p 'use-package)
-    (message "EMACS install use-package.el")
     (package-refresh-contents)
     (package-install 'use-package))
 
@@ -16,62 +13,112 @@
     :ensure t
     :functions  evil-mode
     :config
-    (evil-mode 1))
+    (evil-mode 1)
+    (define-prefix-command 'main-key)
+    (define-key evil-normal-state-map (kbd "SPC") 'main-key))
 
   (use-package yasnippet
     :ensure t
     :commands  yas-reload-all
     :hook      ((clojure-mode . yas-minor-mode))
+    :bind      (:map main-key
+		     ("y i" . yas-insert-snippet))
     :config
     (setq yas-snippet-dirs  '("~/.emacs.d/customizations/snippets"))
     (yas-reload-all))
 
   (use-package paredit
     :ensure t
-    :hook      ((clojure-mode . enable-paredit-mode)))
+    :hook   ((clojure-mode . enable-paredit-mode))
+    :bind   (:map main-key
+		  ("p r" . paredit-raise-sexp)
+		  ("p s" . paredit-forward-slurp-sexp)))
 
   (use-package xclip
     :ensure t
     :config (xclip-mode 1))
 
   (use-package company
-    :ensure t
-    :hook ((after-init-hook . global-company-mode)))
+    :ensure   t
+    :commands company-mode
+    :init
+    (company-mode)
+    :config
+    (setq company-idle-delay            0
+	  company-minimum-prefix-length 2))
 
   (use-package company-statistics
     :ensure t
-    :hook   ((after-init-hook . company-statistics-mode)))
+    :commands company-statistics-mode
+    :init
+    (company-statistics-mode))
 
   (use-package cider
-    :ensure t)
+    :ensure t
+    :bind (:map main-key
+		;; Jack in
+		("c j j" . cider-jack-in-clj)
+		("c j s" . cider-jack-in-cljs)
+		("c j x" . cider-jack-in-cljs)
+		;; Connect
+		("c c j" . cider-connect-clj)
+		("c c s" . cider-connect-cljs)
+		("c c x" . cider-connect-clj&cljs)
+		;; Eval
+		("e p" . cider-eval-sexp-at-point)
+		("e b" . cider-eval-buffer)
+		;; Print
+		("c p l" . cider-pprint-eval-last-sexp)
+		;; Tests
+		("c t n" . cider-test-run-ns-tests)))
 
   (use-package avy 
-    :ensure t)
+    :ensure t
+    :bind   (:map main-key
+	     ("." . avy-goto-char-timer)))
 
   (use-package ace-window
-    :ensure t)
-  
-  (use-package clojure-mode
-    :ensure t)
+    :ensure t
+    :bind   (:map main-key
+		  ("w /" . split-window-horizontally)
+		  ("w -" . split-window-vertically)
+		  ("w <right>" . windmove-right)
+		  ("w <left>" . windmove-left)
+		  ("w <up>" . windmove-up)
+		  ("w <down>" . windmove-down)))
 
-  (use-package general
-    :ensure t)
+  (use-package psql
+    :load-path "~/.emacs.d/plugins/psql"
+    :commands run-psql
+    :bind (:map main-key
+		("e s" . run-sql)))
 
-  (add-to-list 'load-path "~/.emacs.d/customizations")
-  (load "keybinding.el")
-  (load "psql.el")
+  (use-package helm-ag
+    :ensure t
+    :bind   (:map main-key
+		  ("h r" . helm-do-ag-project-root)
+		  ("s d" . find-file)))
 
+  (use-package find-file-in-project
+    :ensure t
+    :bind   (:map main-key
+		  ("f f" . ffip)))
   ;;Startup buffer
   (with-current-buffer "*scratch*"
     (insert " Startup time  | " (emacs-init-time) "\n"
 	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(paredit ace-window avy cider yasnippet evil xclip general company-statistics clojure-mode)))
+   '(highlight-indent-guides ## telephone-line-mode telephone-line find-file-in-project helm-ag helm projectile yasnippet xclip use-package paredit evil company-statistics cider ace-window))
+ '(safe-local-variable-values
+   '((cider-figwheel-main-default-options . ":dev")
+     (cider-default-cljs-repl . figwheel-main)
+     (cider-clojure-cli-global-options . "-A:fig:test"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,5 +1,6 @@
 ;;Environments
 (setenv "PGPASSWORD" "postgres")
+(show-paren-mode 1)
 
 ;;Disable splash screen
 (setq inhibit-startup-message t)
