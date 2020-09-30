@@ -18,7 +18,7 @@
     (define-key evil-normal-state-map (kbd "SPC") 'main-key))
 
   (use-package yasnippet
-    :ensure t
+    :ensure    t
     :commands  yas-reload-all
     :hook      ((clojure-mode . yas-minor-mode))
     :bind      (:map main-key
@@ -36,16 +36,23 @@
 
   (use-package xclip
     :ensure t
+    :functions xclip-mode
     :config (xclip-mode 1))
 
   (use-package company
     :ensure   t
-    :commands company-mode
-    :init
-    (company-mode)
+    :commands global-company-mode
+    :init 
+    (global-company-mode)
     :config
     (setq company-idle-delay            0
 	  company-minimum-prefix-length 2))
+
+  (use-package http
+    :ensure t
+    :mode   ("\\.http\\'" . http-mode)
+    :bind   (:map main-key
+		  ("h p" . http-process)))
 
   (use-package company-statistics
     :ensure t
@@ -103,6 +110,7 @@
     :ensure t
     :bind   (:map main-key
 		  ("f f" . ffip)))
+
   ;;Startup buffer
   (with-current-buffer "*scratch*"
     (insert " Startup time  | " (emacs-init-time) "\n"
@@ -114,7 +122,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(highlight-indent-guides ## telephone-line-mode telephone-line find-file-in-project helm-ag helm projectile yasnippet xclip use-package paredit evil company-statistics cider ace-window))
+   '(telega http dumb-jump highlight-indent-guides ## telephone-line-mode telephone-line find-file-in-project helm-ag helm projectile yasnippet xclip use-package paredit evil company-statistics cider ace-window))
  '(safe-local-variable-values
    '((cider-figwheel-main-default-options . ":dev")
      (cider-default-cljs-repl . figwheel-main)
