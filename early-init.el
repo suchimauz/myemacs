@@ -49,15 +49,16 @@
 (setq company-minimum-prefix-length 2)
 
 ;;Custom mode-line
-(setq mode-line-format
-      (list 
-       ""
-       'mode-line-buffer-identification
-       (propertize " %l" 'face '(:foreground "red"))
-       ":"
-       (propertize "%c " 'face '(:foreground "red"))
-       '((:eval
-	  (cond
-	   ((buffer-modified-p)
-	    (propertize "*" 'face '(:foreground "red"))))))))
+(setq-default
+ mode-line-format
+ (list 
+  ""
+  'mode-line-buffer-identification
+  (propertize " %l" 'face '(:foreground "red"))
+  ":"
+  (propertize "%c " 'face '(:foreground "red"))
+  '((:eval
+     (cond
+      ((buffer-modified-p)
+       (propertize "*" 'face '(:foreground "red"))))))))
 
