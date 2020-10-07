@@ -97,8 +97,10 @@
   (use-package psql
     :load-path "~/.emacs.d/plugins/psql"
     :commands run-psql
-    :bind (:map main-key
-		("e s" . run-sql)))
+    :bind     (:map main-key
+		    ("e s" . run-sql))
+    :init
+    (setenv "PGPASSWORD" "postgres"))
 
   (use-package helm-ag
     :ensure t
@@ -115,21 +117,3 @@
   (with-current-buffer "*scratch*"
     (insert " Startup time  | " (emacs-init-time) "\n"
 	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(telega http dumb-jump highlight-indent-guides ## telephone-line-mode telephone-line find-file-in-project helm-ag helm projectile yasnippet xclip use-package paredit evil company-statistics cider ace-window))
- '(safe-local-variable-values
-   '((cider-figwheel-main-default-options . ":dev")
-     (cider-default-cljs-repl . figwheel-main)
-     (cider-clojure-cli-global-options . "-A:fig:test"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

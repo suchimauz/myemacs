@@ -1,5 +1,4 @@
-;;Environments
-(setenv "PGPASSWORD" "postgres")
+
 (show-paren-mode 1)
 
 ;;Disable splash screen
@@ -40,6 +39,8 @@
   (setq gc-cons-threshold most-positive-fixnum))
 (defun my-minibuffer-exit-hook ()
   (setq gc-cons-threshold 800000))
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
 ;;Disable delay in showing suggestions.
 (setq company-idle-delay 0)
@@ -47,5 +48,16 @@
 ;;Show suggestions after entering two character.
 (setq company-minimum-prefix-length 2)
 
-(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
-(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+;;Custom mode-line
+(setq mode-line-format
+      (list 
+       ""
+       'mode-line-buffer-identification
+       (propertize " %l" 'face '(:foreground "red"))
+       ":"
+       (propertize "%c " 'face '(:foreground "red"))
+       '((:eval
+	  (cond
+	   ((buffer-modified-p)
+	    (propertize "*" 'face '(:foreground "red"))))))))
+
