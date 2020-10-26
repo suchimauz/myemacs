@@ -54,11 +54,11 @@
  (list 
   ""
   'mode-line-buffer-identification
-  (propertize " %l" 'face '(:foreground "red"))
+  (propertize " %l" 'face '(:foreground "white"))
   ":"
-  (propertize "%c " 'face '(:foreground "red"))
+  (propertize "%c " 'face '(:foreground "white"))
   '((:eval
      (cond
       ((buffer-modified-p)
-       (propertize "*" 'face '(:foreground "red"))))))))
+       (propertize "*" 'face '(:foreground "yellow"))))))))
 

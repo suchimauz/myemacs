@@ -12,10 +12,33 @@
   (use-package evil
     :ensure t
     :functions  evil-mode
-    :config
+    :init
     (evil-mode 1)
     (define-prefix-command 'main-key)
-    (define-key evil-normal-state-map (kbd "SPC") 'main-key))
+    (define-key evil-normal-state-map (kbd "SPC") 'main-key)
+    :bind
+    (:map main-key
+	  ("b b" . buffer-menu)))
+
+  (use-package winum
+    :ensure t
+    :commands winum-mode
+    :init
+    (winum-mode)
+    :config
+    (setq winum-format " [%s] ")
+    :bind
+    (:map main-key
+	  ("0" . winum-select-window-0-or-10)
+	  ("1" . winum-select-window-1)
+	  ("2" . winum-select-window-2)
+	  ("3" . winum-select-window-3)
+	  ("4" . winum-select-window-4)
+	  ("5" . winum-select-window-5)
+	  ("6" . winum-select-window-6)
+	  ("7" . winum-select-window-7)
+	  ("8" . winum-select-window-8)
+	  ("9" . winum-select-window-9)))
 
   (use-package yasnippet
     :ensure    t
@@ -82,7 +105,7 @@
   (use-package avy 
     :ensure t
     :bind   (:map main-key
-	     ("." . avy-goto-char-timer)))
+		  ("." . avy-goto-char-timer)))
 
   (use-package ace-window
     :ensure t
@@ -107,6 +130,11 @@
     :bind   (:map main-key
 		  ("h r" . helm-do-ag-project-root)
 		  ("s d" . find-file)))
+
+  (use-package gruvbox-theme
+    :ensure t
+    :config
+    (load-theme 'gruvbox-dark-medium t))
 
   (use-package find-file-in-project
     :ensure t
