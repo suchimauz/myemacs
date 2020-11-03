@@ -38,6 +38,8 @@
   (load-package-file "avy.el")
   ;; Interface to PostgreSQL
   (load-package-file "psql.el")
+  ;; Split frames
+  (load-package-file "ace-window.el")
   ;; Regexp instead of PCRE as pattern
   (load-package-file "helm-ag.el")
   ;; User theme
