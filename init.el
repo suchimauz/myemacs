@@ -9,157 +9,43 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
-  (use-package evil
-    :ensure t
-    :functions  evil-mode
-    :init
-    (evil-mode 1)
-    (define-prefix-command 'main-key)
-    (define-key evil-normal-state-map (kbd "SPC") 'main-key)
-    :bind
-    (:map main-key
-	  ("b b" . buffer-menu)))
+  (defun load-package-file (file)
+    (interactive "f")
+    "Load a file in current user's configuration directory"
+    (load-file (expand-file-name file  "~/.emacs.d/packages/")))
 
-  (use-package dimmer
-    :ensure t
-    :commands (dimmer-configure-which-key dimmer-configure-helm)
-    :functions dimmer-mode
-    :config
-    (setq dimmer-fraction 0.35)
-    :init
-    (dimmer-configure-which-key)
-    (dimmer-configure-helm)
-    (dimmer-mode t))
+  ;; Emulates the main features of Vim
+  (load-package-file "evil.el")
+  ;; Clojure font-lock, indentation, navigation and refactoring
+  (load-package-file "clojure-mode.el")
+  ;; Navigate windows and frames using numbers
+  (load-package-file "winum.el")
+  ;; Template system for abbreviation and automatically expand it into function templates.
+  (load-package-file "yasnippet.el")
+  ;; Minor mode for performing structured editing of S-expression data
+  (load-package-file "paredit.el")
+  ;; Copy&paste GUI clipboard from text terminal
+  (load-package-file "xclip.el")
+  ;; Text completion framework
+  (load-package-file "company.el")
+  ;; Keep a log of a certain number of completions choose
+  (load-package-file "company-statistics.el")
+  ;; HTTP client
+  (load-package-file "http.el")
+  ;; Support for interactive programming in Clojure
+  (load-package-file "cider.el")
+  ;; Jumping to visible text using a char-based decision tree
+  (load-package-file "avy.el")
+  ;; Interface to PostgreSQL
+  (load-package-file "psql.el")
+  ;; Regexp instead of PCRE as pattern
+  (load-package-file "helm-ag.el")
+  ;; User theme
+  (load-package-file "theme.el")
+  ;; Find file/directory
+  (load-package-file "find-file-in-project.el")
 
-  (use-package clojure-mode
-    :ensure t
-    :bind (:map main-key
-		("f a" . clojure-align)
-		("f f" . clojure-thread-first-all)
-		("f l" . clojure-thread-last-all)))
-
-  (use-package winum
-    :ensure t
-    :commands winum-mode
-    :init
-    (winum-mode)
-    :config
-    (setq winum-format " [%s] ")
-    :bind
-    (:map main-key
-	  ("0" . winum-select-window-0-or-10)
-	  ("1" . winum-select-window-1)
-	  ("2" . winum-select-window-2)
-	  ("3" . winum-select-window-3)
-	  ("4" . winum-select-window-4)
-	  ("5" . winum-select-window-5)
-	  ("6" . winum-select-window-6)
-	  ("7" . winum-select-window-7)
-	  ("8" . winum-select-window-8)
-	  ("9" . winum-select-window-9)))
-
-  (use-package yasnippet
-    :ensure    t
-    :commands  yas-reload-all
-    :hook      ((clojure-mode . yas-minor-mode))
-    :bind      (:map main-key
-		     ("y i" . yas-insert-snippet))
-    :config
-    (setq yas-snippet-dirs  '("~/.emacs.d/customizations/snippets"))
-    (yas-reload-all))
-
-  (use-package paredit
-    :ensure t
-    :hook   ((clojure-mode . enable-paredit-mode))
-    :bind   (:map main-key
-		  ("p r" . paredit-raise-sexp)
-		  ("p s" . paredit-forward-slurp-sexp)))
-
-  (use-package xclip
-    :ensure t
-    :functions xclip-mode
-    :config (xclip-mode 1))
-
-  (use-package company
-    :ensure   t
-    :commands global-company-mode
-    :init 
-    (global-company-mode)
-    :config
-    (setq company-idle-delay            0
-	  company-minimum-prefix-length 2))
-
-  (use-package http
-    :ensure t
-    :mode   ("\\.http\\'" . http-mode)
-    :bind   (:map main-key
-		  ("h p" . http-process)))
-
-  (use-package company-statistics
-    :ensure t
-    :commands company-statistics-mode
-    :init
-    (company-statistics-mode))
-
-  (use-package cider
-    :ensure t
-    :bind (:map main-key
-		;; Jack in
-		("c j j" . cider-jack-in-clj)
-		("c j s" . cider-jack-in-cljs)
-		("c j x" . cider-jack-in-cljs)
-		;; Connect
-		("c c j" . cider-connect-clj)
-		("c c s" . cider-connect-cljs)
-		("c c x" . cider-connect-clj&cljs)
-		;; Eval
-		("e p" . cider-eval-sexp-at-point)
-		("e b" . cider-eval-buffer)
-		;; Print
-		("c p l" . cider-pprint-eval-last-sexp)
-		;; Tests
-		("c t n" . cider-test-run-ns-tests)))
-
-  (use-package avy
-    :ensure t
-    :bind   (:map main-key
-		  ("." . avy-goto-char-timer)))
-
-  (use-package ace-window
-    :ensure t
-    :bind   (:map main-key
-		  ("w /" . split-window-horizontally)
-		  ("w -" . split-window-vertically)
-		  ("w <right>" . windmove-right)
-		  ("w <left>" . windmove-left)
-		  ("w <up>" . windmove-up)
-		  ("w <down>" . windmove-down)))
-
-  (use-package psql
-    :load-path "~/.emacs.d/plugins/psql"
-    :commands run-psql
-    :bind     (:map main-key
-		    ("e s" . run-sql))
-    :init
-    (setenv "PGPASSWORD" "postgres"))
-
-  (use-package helm-ag
-    :ensure t
-    :bind   (:map main-key
-		  ("h r" . helm-do-ag-project-root)
-		  ("s d" . find-file)))
-
-  (use-package gruvbox-theme
-    :ensure t
-    :config
-    (load-theme 'gruvbox-dark-medium t))
-
-  (use-package find-file-in-project
-    :ensure t
-    :bind   (:map main-key
-		  ("f f" . ffip)))
-
-  ;;Startup buffer
+  ;; Startup buffer
   (with-current-buffer "*scratch*"
     (insert " Startup time  | " (emacs-init-time) "\n"
 	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))))
