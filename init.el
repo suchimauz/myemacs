@@ -20,6 +20,24 @@
     (:map main-key
 	  ("b b" . buffer-menu)))
 
+  (use-package dimmer
+    :ensure t
+    :commands (dimmer-configure-which-key dimmer-configure-helm)
+    :functions dimmer-mode
+    :config
+    (setq dimmer-fraction 0.35)
+    :init
+    (dimmer-configure-which-key)
+    (dimmer-configure-helm)
+    (dimmer-mode t))
+
+  (use-package clojure-mode
+    :ensure t
+    :bind (:map main-key
+		("f a" . clojure-align)
+		("f f" . clojure-thread-first-all)
+		("f l" . clojure-thread-last-all)))
+
   (use-package winum
     :ensure t
     :commands winum-mode
@@ -102,7 +120,7 @@
 		;; Tests
 		("c t n" . cider-test-run-ns-tests)))
 
-  (use-package avy 
+  (use-package avy
     :ensure t
     :bind   (:map main-key
 		  ("." . avy-goto-char-timer)))
