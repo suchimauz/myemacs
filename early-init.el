@@ -48,10 +48,13 @@
 ;;Show suggestions after entering two character.
 (setq company-minimum-prefix-length 2)
 
+;; Show whitespaces
+(setq-default show-trailing-whitespace t)
+
 ;;Custom mode-line
 (setq-default
  mode-line-format
- (list 
+ (list
   ""
   'mode-line-buffer-identification
   (propertize " %l" 'face '(:foreground "white"))
