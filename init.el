@@ -46,6 +46,8 @@
   (load-package-file "theme.el")
   ;; Find file/directory
   (load-package-file "find-file-in-project.el")
+  ;; Search in line
+  (load-package-file "evil-snipe.el")
 
   ;; Startup buffer
   (with-current-buffer "*scratch*"

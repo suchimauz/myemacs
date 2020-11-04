@@ -1,3 +1,3 @@
 (use-package avy
   :ensure t
-  :bind   (([f1] . avy-goto-char-timer)))
+  :bind   (([f2] . avy-goto-word-1)))
