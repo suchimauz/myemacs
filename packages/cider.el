@@ -1,5 +1,9 @@
 (use-package cider
   :ensure t
+  :config
+  (setq cider-repl-pop-to-buffer-on-connect nil
+	nrepl-log-messages nil
+	cider-dynamic-indentation nil)
   :bind  (:map main-key
 	       ;; Find
 	       ("c f v" . cider-find-var)

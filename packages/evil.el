@@ -8,6 +8,9 @@
   :bind
   (:map main-key
 	("b b" . buffer-menu)
+	("w t" . (lambda ()
+		   (interactive)
+		   (term "/bin/zsh")))
 	("b s g" . (lambda ()
 		     (interactive)
 		     (browse-url-firefox (concat "https://google.com/search?q="

@@ -1,4 +1,4 @@
-(use-package gruvbox-theme
+(use-package tron-legacy-theme
   :ensure t
   :config
-  (load-theme 'gruvbox-dark-medium t))
+  (load-theme 'tron-legacy t))
