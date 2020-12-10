@@ -50,6 +50,15 @@
 ;; Show whitespaces
 (setq-default show-trailing-whitespace t)
 
+(setq use-dialog-box nil)
+(setq redisplay-dont-pause t)
+(setq auto-save-default nil)
+(scroll-bar-mode -1)
+(setq word-wrap t)
+(global-visual-line-mode t)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq x-select-enable-clipboard t)
+
 ;;Custom mode-line
 (setq-default
  mode-line-format

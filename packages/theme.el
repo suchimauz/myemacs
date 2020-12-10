@@ -1,4 +1,4 @@
-(use-package tron-legacy-theme
+(use-package darkburn-theme
   :ensure t
   :config
-  (load-theme 'tron-legacy t))
+  (load-theme 'darkburn t))
