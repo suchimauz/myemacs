@@ -52,4 +52,53 @@
   ;; Startup buffer
   (with-current-buffer "*scratch*"
     (insert " Startup time  | " (emacs-init-time) "\n"
-	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))))
+	    " Version       | " (replace-regexp-in-string "\n" "" (emacs-version)))
+    (insert "\n\n Projects:\n")
+    (insert "\t")
+
+    (insert-text-button
+     "alkona"
+     'action (lambda (button)
+	       (find-file "~/work/alkona/ui/src/app/core.cljs")))
+
+    (insert "\n\t")
+    (insert-text-button
+     "cleancss"
+     'action (lambda (button)
+	       (find-file "~/study/cleancss/src/cleancss/core.clj")))
+
+    (insert "\n\n Packages:")
+
+    (insert "\n\t")
+    (insert-text-button
+     "org"
+     'action (lambda (button)
+	       (find-file "~/org.org")))
+
+    (insert "\n\t")
+    (insert-text-button
+     "postgresql"
+     'action (lambda (button)
+	       (find-file "~/study/postgresl.sql")))
+
+    (insert "\n\t")
+    (insert-text-button
+     "http"
+     'action (lambda (button)
+	       (find-file "~/http.http")))
+
+    ))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(evil-snipe find-file-in-project gruvbox-theme helm-ag ace-window avy cider http company-statistics company xclip paredit yasnippet winum clojure-mode evil use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
