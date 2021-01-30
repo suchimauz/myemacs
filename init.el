@@ -14,6 +14,9 @@
     "Load a file in current user's configuration directory"
     (load-file (expand-file-name file  "~/.emacs.d/packages/")))
 
+
+  ;; Supporting Scheme language
+  (load-package-file "geiser.el")
   ;; Emulates the main features of Vim
   (load-package-file "evil.el")
   ;; Clojure font-lock, indentation, navigation and refactoring
@@ -85,20 +88,4 @@
     (insert-text-button
      "http"
      'action (lambda (button)
-	       (find-file "~/http.http")))
-
-    ))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(evil-snipe find-file-in-project gruvbox-theme helm-ag ace-window avy cider http company-statistics company xclip paredit yasnippet winum clojure-mode evil use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+	       (find-file "~/http.http")))))
