@@ -20,7 +20,7 @@
  ;; Show suggestions after entering two character.
  company-minimum-prefix-length 2
  ;; Show whitespaces
- show-trailing-whitespace t
+ show-trailing-whitespace nil
  ;; Forcing redisplay
  redisplay-dont-pause t)
 
@@ -38,6 +38,9 @@
 (tool-bar-mode -1)
 ;;Enable insert matching delimiters
 (electric-pair-mode 1)
+;; Save place in files between Sessions
+(save-place-mode 1)
+
 
 ;;Custom mode-line
 (setq-default
