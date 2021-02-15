@@ -40,18 +40,3 @@
 (electric-pair-mode 1)
 ;; Save place in files between Sessions
 (save-place-mode 1)
-
-
-;;Custom mode-line
-(setq-default
- mode-line-format
- (list
-  ""
-  'mode-line-buffer-identification
-  (propertize " %l" 'face '(:foreground "white"))
-  ":"
-  (propertize "%c " 'face '(:foreground "white"))
-  '((:eval
-     (cond
-      ((buffer-modified-p)
-       (propertize "*" 'face '(:foreground "red"))))))))

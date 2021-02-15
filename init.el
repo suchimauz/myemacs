@@ -13,6 +13,23 @@
   (defun load-package-file (file)
     (load-file (expand-file-name file  "~/.emacs.d/packages/")))
 
+  ;;Custom mode-line
+  (setq-default
+   mode-line-format
+   (list
+    ""
+    'mode-line-buffer-identification
+    (propertize " %l" 'face '(:foreground "white"))
+    ":"
+    (propertize "%c " 'face '(:foreground "white"))
+    '((:eval
+       (cond
+	((buffer-modified-p)
+	 (propertize "*" 'face '(:foreground "red"))))))
+
+    " Messages:"
+    `((:eval (telega-mode-line-unread-unmuted)))))
+
   ;; Emulates the main features of Vim
   (load-package-file "evil.el")
 
@@ -21,7 +38,6 @@
 
   ;; Multi terminal
   (load-package-file "multi-term.el")
-
 
   ;; Clojure font-lock, indentation, navigation and refactoring
   (load-package-file "clojure-mode.el")
@@ -63,17 +79,6 @@
   (load-package-file "theme.el")
 
   ;; Find file/directory
-  (load-package-file "find-file-in-project.el"))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(find-file-in-project gruvbox-theme helm-ag ace-window avy cider http company-statistics company paredit yasnippet winum clojure-mode evil multi-term use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  (load-package-file "find-file-in-project.el")
+
+  )
