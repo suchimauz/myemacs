@@ -1,9 +1,5 @@
 (require 'package)
 
-(custom-set-variables
- '(package-archives
-   '(("melpa" . "http://melpa.org/packages/"))))
-
 (defun defpackages (directory paths)
   (dolist (path paths)
     (load-file (expand-file-name path directory))))
@@ -11,6 +7,7 @@
 (let ((gc-cons-threshold most-positive-fixnum)
       (file-name-handler-alist nil))
 
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents))
@@ -52,3 +49,16 @@
       "cider.el"                ;; Support for interactive programming in Clojure
       "clojure-mode.el"         ;; Clojure font-lock, indentation, navigation and refactoring
       )))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(cider gruvbox-theme multi-term http find-file-in-project ace-window helm-ag winum avy company-statistics yasnippet paredit company evil use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
