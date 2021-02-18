@@ -1,84 +1,54 @@
+(require 'package)
+
+(custom-set-variables
+ '(package-archives
+   '(("melpa" . "http://melpa.org/packages/"))))
+
+(defun defpackages (directory paths)
+  (dolist (path paths)
+    (load-file (expand-file-name path directory))))
+
 (let ((gc-cons-threshold most-positive-fixnum)
       (file-name-handler-alist nil))
 
-  (require 'package)
-
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  (setq package-enable-at-startup nil)
-  (package-initialize nil)
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
-
-  (defun load-package-file (file)
-    (load-file (expand-file-name file  "~/.emacs.d/packages/")))
-
-  ;;Custom mode-line
+  
   (setq-default
    mode-line-format
-   (list
-    ""
-    'mode-line-buffer-identification
-    (propertize " %l" 'face '(:foreground "white"))
-    ":"
-    (propertize "%c " 'face '(:foreground "white"))
-    '((:eval
-       (cond
-	((buffer-modified-p)
-	 (propertize "*" 'face '(:foreground "red"))))))
+   (list " " 'mode-line-buffer-identification
+	 " " "%l:%c" 
+	 " " "Messages:" `((:eval (telega-mode-line-unread-unmuted)))))
 
-    " Messages:"
-    `((:eval (telega-mode-line-unread-unmuted)))))
+  (defpackages "~/.emacs.d/packages/"
+    '(;;===[EDITING]===
+      "evil.el"                 ;; Emulates the main features of Vim
+      "company.el"              ;; Text completion framework
+      "paredit.el"              ;; Minor mode for performing structured editing of S-expression data
+      "yasnippet.el"            ;; Template system for abbreviation and automatically expand it into function templates.
+      "company-statistics.el"   ;; Keep a log of a certain number of completions choose
 
-  ;; Emulates the main features of Vim
-  (load-package-file "evil.el")
+      ;;===[NAVIGATION]===
+      "avy.el"                  ;; Jumping to visible text using a char-based decision tree
+      "winum.el"                ;; Navigate windows and frames using numbers
+      "helm-ag.el"              ;; Regexp instead of PCRE as pattern
+      "ace-window.el"           ;; Split frames
+      "find-file-in-project.el" ;; Find file/directory
 
-  ;; Telegram Descktop
-  (load-package-file "telega.el")
+      ;;===[EMULATES]===
+      "psql.el"                 ;; Interface to PostgreSQL
+      "http.el"                 ;; HTTP client
+      "telega.el"               ;; Telegram Desktop
+      "multi-term.el"           ;; Multi terminal
 
-  ;; Multi terminal
-  (load-package-file "multi-term.el")
+      ;;===[VISUAL]===
+      "theme.el"                ;; User theme
 
-  ;; Clojure font-lock, indentation, navigation and refactoring
-  (load-package-file "clojure-mode.el")
-
-  ;; Navigate windows and frames using numbers
-  (load-package-file "winum.el")
-
-  ;; Template system for abbreviation and automatically expand it into function templates.
-  (load-package-file "yasnippet.el")
-
-  ;; Minor mode for performing structured editing of S-expression data
-  (load-package-file "paredit.el")
-
-  ;; Text completion framework
-  (load-package-file "company.el")
-
-  ;; Keep a log of a certain number of completions choose
-  (load-package-file "company-statistics.el")
-
-  ;; HTTP client
-  (load-package-file "http.el")
-
-  ;; Support for interactive programming in Clojure
-  (load-package-file "cider.el")
-
-  ;; Jumping to visible text using a char-based decision tree
-  (load-package-file "avy.el")
-
-  ;; Interface to PostgreSQL
-  (load-package-file "psql.el")
-
-  ;; Split frames
-  (load-package-file "ace-window.el")
-
-  ;; Regexp instead of PCRE as pattern
-  (load-package-file "helm-ag.el")
-
-  ;; User theme
-  (load-package-file "theme.el")
-
-  ;; Find file/directory
-  (load-package-file "find-file-in-project.el")
-
-  )
+      ;;===[CLOJURE]===
+      "cider.el"                ;; Support for interactive programming in Clojure
+      "clojure-mode.el"         ;; Clojure font-lock, indentation, navigation and refactoring
+      )))

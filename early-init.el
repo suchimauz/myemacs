@@ -1,3 +1,5 @@
+(kill-buffer "*scratch*")
+
 (setq-default
  ;; Disable splash screen
  inhibit-startup-message t

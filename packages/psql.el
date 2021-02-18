@@ -7,5 +7,4 @@
   :init
   (setenv "PGPASSWORD" "postgres"))
 
-;; (setenv "PGPASSWORD" "postgres")
-(setenv "PGPASSWORD" "rVp7Q6FDLhaH")
+(setenv "PGPASSWORD" "postgres")
