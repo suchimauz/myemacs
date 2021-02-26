@@ -6,9 +6,6 @@
   :init
   (winum-mode)
 
-  :config
-  (setq winum-format " [%s] ")
-
   :bind
   (:map main-key
 	("0" . winum-select-window-0-or-10)

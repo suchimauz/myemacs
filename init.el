@@ -14,12 +14,6 @@
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
-  
-  (setq-default
-   mode-line-format
-   (list " " 'mode-line-buffer-identification
-	 " " "%l:%c" 
-	 " " "Messages:" `((:eval (telega-mode-line-unread-unmuted)))))
 
   (defpackages "~/.emacs.d/packages/"
     '(;;===[EDITING]===
@@ -34,31 +28,25 @@
       "winum.el"                ;; Navigate windows and frames using numbers
       "helm-ag.el"              ;; Regexp instead of PCRE as pattern
       "ace-window.el"           ;; Split frames
-      "find-file-in-project.el" ;; Find file/directory
 
       ;;===[EMULATES]===
       "psql.el"                 ;; Interface to PostgreSQL
       "http.el"                 ;; HTTP client
       "telega.el"               ;; Telegram Desktop
-      "multi-term.el"           ;; Multi terminal
 
       ;;===[VISUAL]===
       "theme.el"                ;; User theme
+      "rainbow-identifiers.el"  ;; Colors variables
+      "visual-fill-column.el"   ;; Visual limit on the number of columns
 
       ;;===[CLOJURE]===
       "cider.el"                ;; Support for interactive programming in Clojure
       "clojure-mode.el"         ;; Clojure font-lock, indentation, navigation and refactoring
-      )))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(cider gruvbox-theme multi-term http find-file-in-project ace-window helm-ag winum avy company-statistics yasnippet paredit company evil use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+      ))
+
+  (setq-default
+   mode-line-format
+   (list " [" '(:eval (winum-get-number-string))          "]"
+	 " [" 'mode-line-buffer-identification            "]"
+	 " [" '(:eval (format-time-string "%d.%m.%Y %T")) "]"
+	 " [" "%l:%c"                                     "]")))
