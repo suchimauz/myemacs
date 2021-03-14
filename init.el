@@ -15,6 +15,7 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
+
   (defpackages "~/.emacs.d/packages/"
     '(;;===[EDITING]===
       "evil.el"                 ;; Emulates the main features of Vim
@@ -27,7 +28,6 @@
       "avy.el"                  ;; Jumping to visible text using a char-based decision tree
       "winum.el"                ;; Navigate windows and frames using numbers
       "helm-ag.el"              ;; Regexp instead of PCRE as pattern
-      "ace-window.el"           ;; Split frames
 
       ;;===[EMULATES]===
       "psql.el"                 ;; Interface to PostgreSQL
@@ -43,6 +43,8 @@
       "cider.el"                ;; Support for interactive programming in Clojure
       "clojure-mode.el"         ;; Clojure font-lock, indentation, navigation and refactoring
       ))
+
+
 
   (setq-default
    mode-line-format

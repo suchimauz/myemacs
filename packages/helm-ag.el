@@ -2,5 +2,4 @@
 
   :bind
   (:map main-key
-	("h r" . helm-do-ag-project-root)
-	("s d" . find-file)))
+	("h r" . helm-do-ag-project-root)))
