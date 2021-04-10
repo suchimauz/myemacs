@@ -2,5 +2,5 @@
   :commands 
   visual-fill-column-mode
 
-  :hook
-  ((clojure-mode . visual-fill-column-mode)))
+  :init
+  (add-hook 'prog-mode-hook 'visual-fill-column-mode))

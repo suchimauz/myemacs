@@ -1,7 +1,7 @@
 (use-package http :ensure t
   
   :mode
-  ("\\.http\\'" . http-mode)
+  ("\\.http\\'" . restclient-mode)
 
   :bind
   (:map main-key
