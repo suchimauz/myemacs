@@ -26,6 +26,9 @@
       "yasnippet.el"
       "company-statistics.el"
 
+      ;;== []
+      "emacs.el"
+
       ;;===[NAVIGATION]===
       "avy.el"
       "winum.el"
@@ -50,5 +53,5 @@
    mode-line-format
    (list " [" '(:eval (winum-get-number-string))          "]"
 	 " [" 'mode-line-buffer-identification            "]"
-	 " [" '(:eval (format-time-string "%d.%m.%Y %T")) "]"
+	 " [" '(:eval (format-time-string "%d.%m %T"))    "]"
 	 " [" "%l:%c"                                     "]")))
