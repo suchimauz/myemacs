@@ -20,7 +20,10 @@
 	;; Eval
 	("e p" . cider-eval-sexp-at-point)
 	("e b" . cider-eval-buffer)
+
 	;; Print
 	("c p l" . cider-pprint-eval-last-sexp)
 	;; Tests
-	("c t n" . cider-test-run-ns-tests)))
+	("c t n" . cider-test-run-ns-tests)
+	("c t c" . cider-test-run-test)
+	))
