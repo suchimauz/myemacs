@@ -1,9 +1,11 @@
 (use-package cider :ensure t
 
   :config
-  (setq cider-repl-pop-to-buffer-on-connect nil
-	nrepl-log-messages                  nil
-	cider-dynamic-indentation           nil)
+  (setq cider-repl-pop-to-buffer-on-connect  nil
+	nrepl-log-messages                   nil
+	cider-auto-select-test-report-buffer nil
+	cider-auto-select-error-buffer       nil
+	cider-dynamic-indentation            nil)
 
   :bind
   (:map main-key
@@ -25,5 +27,4 @@
 	("c p l" . cider-pprint-eval-last-sexp)
 	;; Tests
 	("c t n" . cider-test-run-ns-tests)
-	("c t c" . cider-test-run-test)
-	))
+	("c t c" . cider-test-run-test)))

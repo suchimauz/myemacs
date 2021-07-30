@@ -1,7 +1,8 @@
 (use-package emacs
   :defer t
   :bind
-  (:map
+  (("M-x" . helm-M-x)
+   :map
    main-key
 
    ;; == WINDOW == 

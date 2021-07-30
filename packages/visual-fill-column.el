@@ -3,4 +3,9 @@
   visual-fill-column-mode
 
   :init
-  (add-hook 'prog-mode-hook 'visual-fill-column-mode))
+  (setq visual-fill-column-width 79)
+  (add-hook 'prog-mode-hook 'visual-fill-column-mode)
+
+  :bind
+  (:map main-key
+	("v f" . visual-fill-column-mode)))

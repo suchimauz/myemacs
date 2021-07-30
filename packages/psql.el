@@ -6,5 +6,3 @@
 	("e s" . run-sql))
   :init
   (setenv "PGPASSWORD" "postgres"))
-
-(setenv "PGPASSWORD" "postgres")

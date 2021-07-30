@@ -1,5 +1,8 @@
 (use-package helm-ag :ensure t
 
   :bind
-  (:map main-key
-	("h r" . helm-do-ag-project-root)))
+  (([f1] . helm-imenu)
+   ([f3] . helm-for-files)
+
+   :map main-key
+   ("h r" . helm-do-ag-project-root)))

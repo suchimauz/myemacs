@@ -1,4 +1,5 @@
 (use-package http :ensure t
+  :functions restclient-mode
   
   :mode
   ("\\.http\\'" . restclient-mode)

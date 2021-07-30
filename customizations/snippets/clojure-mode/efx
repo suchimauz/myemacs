@@ -2,7 +2,9 @@
 # name: efx
 # key: efx
 # --
-(rf/reg-event-fx
- ::
- (fn [_ [_ {:keys [params]}]]
-   ))
+(reg-event-fx
+  ::
+  [unwrap]
+  (fn [context payload]
+    {:fx
+     [[]]}))
