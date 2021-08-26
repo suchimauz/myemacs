@@ -1,9 +1,4 @@
-(use-package http :ensure t
-  :functions restclient-mode
-  
-  :mode
-  ("\\.http\\'" . restclient-mode)
-
+(use-package restclient :ensure t
   :bind
   (:map main-key
 	("h p" . http-process)))

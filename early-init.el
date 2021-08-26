@@ -1,5 +1,4 @@
-(kill-buffer "*scratch*")
-
+;; (kill-buffer "*scratch*")
 (setq-default
  ;; Disable splash screen
  inhibit-startup-message t
@@ -42,3 +41,5 @@
 (electric-pair-mode 1)
 ;; Save place in files between Sessions
 (save-place-mode 1)
+(tooltip-mode nil)
+(setq mode-line-format nil)

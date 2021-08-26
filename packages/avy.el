@@ -6,8 +6,7 @@
 
   :config
   (setq
-   avy-background      t
-   avy-timeout-seconds 0.4
-   avy-keys            (nconc (number-sequence ?a ?z)
-			      (number-sequence ?A ?Z)
-			      (number-sequence ?1 ?9))))
+   avy-background t
+   avy-keys       (nconc (number-sequence ?a ?z)
+			 (number-sequence ?A ?Z)
+			 (number-sequence ?1 ?9))))

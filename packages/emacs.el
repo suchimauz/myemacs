@@ -15,8 +15,10 @@
 
 
    ;; == BUFFER == 
-   ("b b" . buffer-menu)
+   ("b b" . helm-buffers-list)
    ("l e" . eval-buffer)
+
+   ("d l" . display-line-numbers-mode)
 
    ;; == SEARCH ==
    ("s d" . find-file)

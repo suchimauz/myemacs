@@ -1,6 +1,5 @@
 (require 'package)
 
-
 (defun defpackages (directory paths)
   (dolist (path paths)
     (load-file (expand-file-name path directory))))
@@ -24,7 +23,7 @@
     "yasnippet.el"
     "company-statistics.el"
 
-    ;;== []
+    ;;== [EMACS]
     "emacs.el"
 
     ;;===[NAVIGATION]===
@@ -35,12 +34,10 @@
     ;;===[EMULATES]===
     "psql.el"
     "restclient.el"
-    ;; "telega.el"
 
     ;;===[VISUAL]===
     "theme.el"
     "visual-fill-column.el"
-    "rainbow-identifiers.el"
 
     ;;===[CLOJURE]===
     "cider.el"
@@ -49,21 +46,15 @@
 
 (setq-default
  mode-line-format
- (list " [" '(:eval (winum-get-number-string))          "]"
-       " [" 'mode-line-buffer-identification            "]"
-       " [" '(:eval (format-time-string "%d.%m %T"))    "]"
-       " [" "%l:%c"                                     "]"))
-
+ (list " [" '(:eval (winum-get-number-string)) "] "
+       'mode-line-buffer-identification))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cider rainbow-identifiers visual-fill-column github-modern-theme http helm-ag winum avy company-statistics yasnippet paredit company evil use-package))
- '(safe-local-variable-values
-   '((cider-clojure-cli-global-options . "-A:test")
-     (cider-default-cljs-repl . figwheel-main))))
+   '(cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
