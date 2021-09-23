@@ -2,8 +2,10 @@
 (use-package avy :ensure t
 
   :bind
-  (([f2] . avy-goto-word-1))
+  (:map
+    main-key
 
+    ("f 2" . avy-goto-word-1))
   :config
   (setq
    avy-background t

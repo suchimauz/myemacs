@@ -4,3 +4,4 @@
 /request
 company-statistics-cache.el
 *.*~
+.cache

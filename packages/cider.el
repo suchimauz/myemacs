@@ -8,23 +8,23 @@
 	cider-dynamic-indentation            nil)
 
   :bind
-  (:map main-key
+  (:map cider-key
 	;; Find
-	("c f v" . cider-find-var)
+	("s f v" . cider-find-var)
 	;; Jack in
-	("c j j" . cider-jack-in-clj)
-	("c j s" . cider-jack-in-cljs)
-	("c j x" . cider-jack-in-cljs)
+	("s j j" . cider-jack-in-clj)
+	("s j s" . cider-jack-in-cljs)
+	("s j c" . cider-jack-in-cljs)
 	;; Connect
-	("c c j" . cider-connect-clj)
-	("c c s" . cider-connect-cljs)
-	("c c x" . cider-connect-clj&cljs)
+	("s c j" . cider-connect-clj)
+	("s c s" . cider-connect-cljs)
+	("s c c" . cider-connect-clj&cljs)
 	;; Eval
 	("e p" . cider-eval-sexp-at-point)
 	("e b" . cider-eval-buffer)
 
 	;; Print
-	("c p l" . cider-pprint-eval-last-sexp)
+	("p l" . cider-pprint-eval-last-sexp)
 	;; Tests
-	("c t n" . cider-test-run-ns-tests)
-	("c t c" . cider-test-run-test)))
+	("t n" . cider-test-run-ns-tests)
+	("t c" . cider-test-run-test)))

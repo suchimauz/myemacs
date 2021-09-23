@@ -1,17 +1,18 @@
 (use-package emacs
   :defer t
   :bind
-  (("M-x" . helm-M-x)
-   :map
+  (:map
    main-key
 
+   ("SPC"       . helm-M-x)
+
    ;; == WINDOW == 
-   ("w /"       . split-window-horizontally)
-   ("w -"       . split-window-vertically)
-   ("w <right>" . windmove-right)
-   ("w <left>"  . windmove-left)
-   ("w <up>"    . windmove-up)
-   ("w <down>"  . windmove-down)
+   ("w 2" . split-window-horizontally)
+   ("w -" . split-window-vertically)
+   ("w l" . windmove-right)
+   ("w h" . windmove-left)
+   ("w k" . windmove-up)
+   ("w j" . windmove-down)
 
 
    ;; == BUFFER == 
