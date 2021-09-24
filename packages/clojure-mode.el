@@ -1,7 +1,7 @@
 (use-package clojure-mode :ensure t
 
   :bind
-  (:map main-key
+  (:map cider-key
 	("f u" . clojure-unwind-all)
 	("f s" . clojure-move-to-let)
 	("f a" . clojure-align)
