@@ -14,7 +14,6 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(set-face-attribute 'default nil :height 140)
 
 (defpackages "~/.emacs.d/packages/"
   '(;;===[EDITING]===
@@ -31,6 +30,8 @@
     "avy.el"
     "winum.el"
     "helm-ag.el"
+    "hl-line-plus.el"
+    "undo-tree.el"
 
     ;;===[EMULATES]===
     "psql.el"
