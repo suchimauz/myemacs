@@ -1,0 +1,3 @@
+[submodule "customizations/themes/monokai"]
+	path = customizations/themes/monokai
+	url = git@github.com:oneKelvinSmith/monokai-emacs.git

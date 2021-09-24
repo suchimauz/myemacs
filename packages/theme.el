@@ -6,5 +6,5 @@
    '(font
      . "-BE5N-Iosevka Term-normal-normal-expanded-*-20-*-*-*-d-0-iso10646-1"))
   (load-file
-   "~/.emacs.d/customizations/themes/monokai-emacs/monokai-theme.el")
+   "~/.emacs.d/customizations/themes/monokai/monokai-theme.el")
   (load-theme 'monokai t))
