@@ -22,6 +22,7 @@
     "paredit.el"
     "yasnippet.el"
     "company-statistics.el"
+    "hideshow.el"
 
     ;;== [EMACS]
     "emacs.el"
@@ -56,7 +57,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package))
+   '(hideshow cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package))
  '(safe-local-variable-values
    '((cider-clojure-cli-global-options . "-A:test")
      (cider-default-cljs-repl . figwheel-main))))
