@@ -61,7 +61,7 @@
       '((propertize (format-time-string "%d.%m.%Y %H:%M:%S" now) 'face 'bold))) 
 (display-time)
 (display-battery-mode)
-(global-flycheck-mode)
+;(global-flycheck-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

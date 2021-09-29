@@ -9,4 +9,6 @@
   (doom-themes-neotree-config)
   (setq doom-themes-treemacs-theme "doom-xcode") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  :init
+  (add-to-list 'default-frame-alist '(font . "Fira Mono for Powerline-14")))
