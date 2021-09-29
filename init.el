@@ -1,8 +1,18 @@
 (require 'package)
+(setq 
+  init-packages-list
+  '(use-package doom-modeline all-the-icons
+		doom-themes))
 
 (defun defpackages (directory paths)
   (dolist (path paths)
     (load-file (expand-file-name path directory))))
+
+(defun init-packages ()
+  (dolist (pack init-packages-list)
+    (unless (package-installed-p pack)
+      (package-refresh-contents)
+      (package-install pack))))
 
 (setq package-archives
       '(("gnu"   . "http://elpa.gnu.org/packages/")
@@ -11,9 +21,8 @@
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(init-packages)
+(require 'all-the-icons)
 
 (defpackages "~/.emacs.d/packages/"
   '(;;===[EDITING]===
@@ -41,23 +50,23 @@
     ;;===[VISUAL]===
     "theme.el"
     "visual-fill-column.el"
+    "modeline.el"
 
     ;;===[CLOJURE]===
     "cider.el"
     "clojure-mode.el"))
 
 
-(setq-default
- mode-line-format
- (list " [" '(:eval (winum-get-number-string)) "] "
-       'mode-line-buffer-identification))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
+ '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   '(hideshow cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package))
+   '(hideshow cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package smart-mode-line smart-mode-line-powerline-theme))
  '(safe-local-variable-values
    '((cider-clojure-cli-global-options . "-A:test")
      (cider-default-cljs-repl . figwheel-main))))

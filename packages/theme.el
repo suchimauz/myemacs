@@ -1,8 +1,12 @@
-(use-package monokai
-  :defer t
-  :init
-  (add-to-list 'default-frame-alist '(font . "Fira Mono for Powerline-14"))
-  ;(set-face-attribute 'default t :font "Fira Mono for Powerline" :height 140)
-  (load-file
-   "~/.emacs.d/customizations/themes/monokai/monokai-theme.el")
-  (load-theme 'monokai t))
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-monokai-classic t)
+
+  (doom-themes-visual-bell-config)
+  (doom-themes-neotree-config)
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
