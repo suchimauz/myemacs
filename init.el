@@ -1,7 +1,10 @@
 (require 'package)
 (setq 
   init-packages-list
-  '(use-package doom-modeline all-the-icons doom-themes ghub project magit git flycheck flycheck-clojure))
+  '(use-package doom-modeline all-the-icons doom-themes
+     ghub project magit git flycheck
+     flycheck-clojure projectile
+     page-break-lines dashboard helm-core helm-projectile))
 
 (defun defpackages (directory paths)
   (dolist (path paths)
@@ -21,8 +24,10 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (init-packages)
+
 (require 'all-the-icons)
 (require 'git)
+(require 'helm-projectile)
 
 (defpackages "~/.emacs.d/packages/"
   '(;;===[EDITING]===
@@ -39,7 +44,7 @@
     ;;===[NAVIGATION]===
     "avy.el"
     "winum.el"
-    "helm-ag.el"
+    "helm.el"
     "hl-line-plus.el"
     "undo-tree.el"
 
@@ -48,6 +53,7 @@
     "restclient.el"
 
     ;;===[VISUAL]===
+    "dashboard.el"
     "theme.el"
     "visual-fill-column.el"
     "modeline.el"
@@ -58,9 +64,13 @@
 
 (setq vc-handled-backends '(git))
 (setq display-time-string-forms
-      '((propertize (format-time-string "%d.%m.%Y %H:%M:%S" now) 'face 'bold))) 
+      '((propertize (format-time-string "%d.%m.%Y %H:%M" now) 'face 'bold))) 
+(setq projectile-completion-system 'helm)
 (display-time)
 (display-battery-mode)
+;(helm-projectile-on)
+(projectile-mode)
+
 ;(global-flycheck-mode)
 
 (custom-set-variables
@@ -72,7 +82,7 @@
    '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   '(hideshow cider visual-fill-column restclient helm-ag winum avy company-statistics yasnippet paredit company evil use-package smart-mode-line smart-mode-line-powerline-theme))
+   '(dashboard hideshow cider visual-fill-column restclient winum avy company-statistics yasnippet paredit company evil use-package helm))
  '(safe-local-variable-values
    '((cider-clojure-cli-global-options . "-A:test")
      (cider-default-cljs-repl . figwheel-main))))
