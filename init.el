@@ -1,8 +1,7 @@
 (require 'package)
 (setq 
   init-packages-list
-  '(use-package doom-modeline all-the-icons
-		doom-themes))
+  '(use-package doom-modeline all-the-icons doom-themes ghub project magit git flycheck flycheck-clojure))
 
 (defun defpackages (directory paths)
   (dolist (path paths)
@@ -23,6 +22,7 @@
   (package-refresh-contents))
 (init-packages)
 (require 'all-the-icons)
+(require 'git)
 
 (defpackages "~/.emacs.d/packages/"
   '(;;===[EDITING]===
@@ -56,6 +56,12 @@
     "cider.el"
     "clojure-mode.el"))
 
+(setq vc-handled-backends '(git))
+(setq display-time-string-forms
+      '((propertize (format-time-string "%d.%m.%Y %H:%M:%S" now) 'face 'bold))) 
+(display-time)
+(display-battery-mode)
+(global-flycheck-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
