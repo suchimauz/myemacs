@@ -1,8 +1,10 @@
 (use-package helm-ag :ensure t
 
   :bind
-  (([f1] . helm-imenu)
+  (("<tab>" . helm-execute-persistent-action)
+   ([f1] . helm-imenu)
    ([f3] . helm-for-files)
 
    :map main-key
-   ("h r" . helm-do-ag-project-root)))
+   ("h r" . helm-do-ag-project-root)
+   ("f f" . helm-find-files)))
