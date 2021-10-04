@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/works/rmis/")
+("~/works/rmis/" "~/.emacs.d/")
