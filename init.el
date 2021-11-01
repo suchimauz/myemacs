@@ -2,8 +2,7 @@
 (setq 
   init-packages-list
   '(use-package doom-modeline all-the-icons doom-themes
-     ghub project magit git flycheck
-     flycheck-clojure projectile
+     ghub project magit git flycheck projectile
      page-break-lines dashboard helm-core helm-projectile))
 
 (defun defpackages (directory paths)
@@ -60,7 +59,9 @@
 
     ;;===[CLOJURE]===
     "cider.el"
-    "clojure-mode.el"))
+
+    ;;===[LANGUAGES]===
+    "mode.el"))
 
 (setq vc-handled-backends '(git))
 (setq display-time-string-forms
@@ -82,7 +83,7 @@
    '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   '(dashboard hideshow cider visual-fill-column restclient winum avy company-statistics yasnippet paredit company evil use-package helm))
+   '(0blayout dashboard hideshow cider visual-fill-column restclient winum avy company-statistics yasnippet paredit company evil use-package helm))
  '(safe-local-variable-values
    '((cider-clojure-cli-global-options . "-A:test")
      (cider-default-cljs-repl . figwheel-main))))

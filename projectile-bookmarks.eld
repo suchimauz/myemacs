@@ -1,1 +1,1 @@
-("~/works/rmis/" "~/.emacs.d/")
+("~/works/rmis/" "~/.emacs.d/" "~/works/parse-malsh/" "~/works/sve/rmis/" "~/works/profile/")
