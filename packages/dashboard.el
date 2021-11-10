@@ -7,7 +7,7 @@
 			  (recents . 5))
 	initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
 	dashboard-banner-logo-title "Welcome to Suchimauz`s Emacs"
-	dashboard-startup-banner "~/.emacs.d/banner.txt"
+	dashboard-startup-banner "~/.doom.d/banner.txt"
 	dashboard-show-shortcuts t
 	dashboard-set-heading-icons t
 	dashboard-set-file-icons t

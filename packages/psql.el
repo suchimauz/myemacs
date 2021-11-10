@@ -1,5 +1,5 @@
 (use-package psql
-  :load-path "~/.emacs.d/plugins/psql"
+  :load-path "~/.doom.d/plugins/psql"
   :commands  run-psql
   :bind
   (:map main-key

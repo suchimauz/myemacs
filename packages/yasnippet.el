@@ -12,5 +12,5 @@
 	("y e" . yas-expand))
 
   :config
-  (setq yas-snippet-dirs  '("~/.emacs.d/customizations/snippets"))
+  (setq yas-snippet-dirs  '("~/.doom.d/customizations/snippets"))
   (yas-reload-all))

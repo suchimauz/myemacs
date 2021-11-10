@@ -3,9 +3,6 @@
   :commands
   winum-mode
 
-  :init
-  (winum-mode)
-
   :bind
   (:map main-key
 	("0" . winum-select-window-0-or-10)
@@ -17,4 +14,7 @@
 	("6" . winum-select-window-6)
 	("7" . winum-select-window-7)
 	("8" . winum-select-window-8)
-	("9" . winum-select-window-9)))
+	("9" . winum-select-window-9))
+
+  :init
+  (winum-mode))

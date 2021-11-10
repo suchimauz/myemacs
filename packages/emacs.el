@@ -12,7 +12,7 @@
 
     ;; == WINDOW == 
     ("w 2" . split-window-horizontally)
-    ("w -" . split-window-vertically)
+    ("w /" . split-window-vertically)
     ("w l" . windmove-right)
     ("w h" . windmove-left)
     ("w k" . windmove-up)
