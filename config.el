@@ -123,6 +123,7 @@
     "hl-line-plus"
     "winum"
     "undo-tree"
+    "hideshow"
 
     ;;===[EMULATES]===
     ;"helm"
@@ -137,7 +138,7 @@
     "cider"
 
     ;;===[LANGUAGES]===
-    ;;"mode"
+    "mode"
     ))
 
 (after! cider

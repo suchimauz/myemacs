@@ -6,7 +6,6 @@
 	cider-auto-select-test-report-buffer nil
 	cider-auto-select-error-buffer       nil
 	cider-dynamic-indentation            nil)
-
   :bind
   (:map cider-key
 	;; Find

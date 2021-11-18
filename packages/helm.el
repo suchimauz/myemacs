@@ -16,7 +16,8 @@
   (map! 
     :leader
     :desc "M-x" "SPC" #'execute-extended-command
-    (:prefix-map ("f" . "file")
-     :desc "Helm Find Files" "f" #'helm-find-files))
+    (:prefix-map 
+      ("f" . "file")
+      :desc "Helm Find Files" "f" #'helm-find-files))
   :init
   (helm-mode 1))

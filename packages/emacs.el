@@ -21,7 +21,6 @@
 
 
     ;; == BUFFER == 
-    ("b b" . helm-buffers-list)
     ("l e" . eval-buffer)
 
     ("d l" . display-line-numbers-mode)
@@ -43,4 +42,11 @@
        (browse-url-firefox
 	 (concat "http://hl7.org/fhir/"
 		 (downcase (read-string "resourceType: "))
-		 ".html#resource"))))))
+		 ".html#resource")))))
+  :config
+  (map!
+    :leader
+    (:prefix-map 
+      ("b" . "buffer")
+      :desc "Switch workspace buffer" "B" #'persp-switch-to-buffer
+      :desc "Switch buffer"           "b" #'helm-buffers-list)))
