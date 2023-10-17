@@ -1,4 +1,5 @@
 (use-package winum :ensure t
+  :load-path "~/.doom.d/plugins/emacs-winum"
 
   :commands
   winum-mode
